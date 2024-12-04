@@ -1,0 +1,116 @@
+/* *********************
+RADIO BUTTONS STYLING
+********************* */
+
+/* Container for the radio buttons */
+#div_id_Transaction_type,
+#div_id_Category_Type {
+    display: flex;
+    gap: 1rem; /* Adjust the gap between the buttons as needed */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form-check elements for individual radio buttons */
+#div_id_Transaction_type .form-check {
+    display: contents; /* Remove block behavior to keep them inline */
+}
+
+#div_id_Category_Type .form-check {
+    display: contents; /* Remove block behavior to keep them inline */
+}
+
+#div_id_Transaction_type .form-label{
+    text-align: left !important; /* Align the text to the left */
+    margin-bottom: 0.5rem;
+}
+
+
+/* Style for the radio button */
+#id_Category_Type_0, 
+#id_Category_Type_1,
+#id_Transaction_type_0,
+#id_Transaction_type_1 {
+    display: none; /* Hide the default radio button */
+}
+
+/* Style for the label associated with the radio button */
+#id_Category_Type_0 + label,
+#id_Category_Type_1 + label,
+#id_Transaction_type_0 + label,
+#id_Transaction_type_1 + label {
+    display: inline-block;
+    padding: 0.625rem 1.875rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3498db; /* Blue color */
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.625rem 0.625rem 0.625rem 0;
+    text-align: center;
+}
+
+/* Style for the label associated with the radio button */
+#id_Category_Type_0 + label, #id_Category_Type_1 + label {
+    display: inline-block;
+    padding: 0.625rem 1.875rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3498db; /* Blue color */
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.625rem 0.625rem 0.625rem 0;
+}
+
+/* Change the background when hovered */
+#id_Category_Type_0 + label:hover,
+#id_Category_Type_1 + label:hover,
+#id_Transaction_type_0 + label:hover,
+#id_Transaction_type_1 + label:hover {
+    background-color: #ecf0f1; /* Light grey */
+    color: #2980b9; /* Darker blue */
+}
+
+/* Style for the selected state */
+#id_Category_Type_0:checked + label,
+#id_Category_Type_1:checked + label, 
+#id_Transaction_type_0:checked + label,
+#id_Transaction_type_1:checked + label {
+    background-color: #3498db; /* Blue background */
+    color: white;
+    border-color: #2980b9; /* Darker blue border */
+}
+
+/* TO REMOVE THE ASTRISKS FROM THE FORM FIELDS */
+.asteriskField {
+    display: none;
+}
+
+.form-label {
+    display: inline;
+    font-size: 14px   !important;
+    font-weight: bold !important;
+    color: black !important;
+    text-align: left !important;
+    align-items: left !important;
+}
+
+/* *******************
+CATEGORY NAME FIELD
+******************* */
+
+#id_Category_Name {
+    width: 60%;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    /* border-radius: 25px; */
+    box-sizing: border-box;
+}

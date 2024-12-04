@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+
+#register_form, form, #t1{
+    text-align: center;
+}
+
+html, body{
+    background-color: white;
+}
+.transaction-form{
+    background-color: white;
+}
+/* Scrollable panel styles */
+.scroll-panel {
+    width: 80%;          /* Width of the panel */
+    max-height: 200px;   /* Maximum height before scrolling */
+    margin: 20px auto;   /* Center the panel */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow-y: auto;    /* Enables vertical scrolling */
+    overflow-x: hidden;  /* Disables horizontal scrolling */
+}
+
+/* Optional: Customize the scrollbar */
+.scroll-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scroll-panel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scroll-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* END OF SCROLL PANEL */
+/* ------------------------------------------------------------------- */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+p{
+    color: red;
+}
+
+.Error-message{
+    color: red;
+    text-align: center;
+}
+
+/* GRID OF MAIN PAGE */
+.grid-container{
+    display: grid;
+
+    height: 100vh;
+    
+    grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+    "sidebar main";
+
+    /* grid-template-columns: 300px 1fr; */
+    /* grid-template-rows: auto 1fr; */
+
+    gap: 0.5rem;
+}
+    /* HEADER  HEADER  HEADER  HEADER  HEADER    */
+header{
+    display: grid;
+    grid-template-columns: 11fr 1fr 1fr;
+    
+    grid-area: header;
+    background-color: lightgreen;
+    
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    height: 7vh;
+    min-height: 100px;
+
+    width: auto;
+    max-width: none;
+}
+.mid{
+    grid-column: 2;
+
+    font-size: 1.25rem;
+    text-align: center;
+    color: blue;
+
+}
+.right{
+    grid-column: 3;
+
+    align-items: center;
+    text-align: center;
+}
+    /* END OF HEADER   END OF HEADER   END OF HEADER */
+/* ------------------------------------------------------ */
+    /* SIDEBAR     SIDEBAR     SIDEBAR */
+aside{
+    grid-area: sidebar;
+    background-color: yellow;
+
+    width: 100%;
+    height: 100vh;
+    min-width: 150px;
+}
+.sidebar{
+    color: rgb(4, 106, 4);
+    font-size: large;
+    font-weight: bolder; /* MESH SHA8ALA */
+    height: auto;
+    width: auto;
+    max-width: 385px;
+}
+#menu{
+    text-align: center;
+    margin: 1rem;
+}
+.icon-sidebar{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    grid-auto-rows: minmax(50px, auto);
+    row-gap: 0rem;
+    column-gap: 0rem;
+
+    justify-items: center;
+    align-items: center;
+}
+.sidebar-content{
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+.icon{
+    font-size: 1.5rem;
+    text-align: center;
+}
+    /* END OF SIDEBAR  END OF SIDEBAR  END OF SIDEBAR */
+
+.grid-container-main{
+    display: grid;
+    grid-template-columns: 0.5fr;
+    grid-template-rows: auto;
+
+    gap: 20px;
+    padding: 5px;
+
+}
+.c1-r1{
+    grid-column: 1;
+    background-color: lightblue;
+}
+.c2r12{
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    background-color: lightcoral;
+}
+.c1r2{
+    grid-column: 1;
+    grid-row: 2;
+    background-color: lightseagreen;
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.col{
+    text-align: center;
+    border: 1px solid black;
+}
+main{
+    grid-area: main;
+    background-color: black;
+    padding: 1rem;
+    overflow-y: auto;
+}
+.transactions-table{
+    width: 100%;
+    border: 1px blue solid;
+    margin-top: 10px;
+    align-content: center;
+}
+/* END OF GRID CONTAINER */
+
+/* CARDS  */
+.card{
+    display: flex;
+    position: relative;
+    top: 0;
+    width: 40%;
+    height: auto;
+
+    padding: 2rem;
+    max-width: 500px;
+    min-width: 250px;
+    
+    background-color: pink;
+    text-align: center;
+
+    border: 2px solid green;  /* 2px thick, solid border with green color */
+    border-radius: 1rem; /* Rounded corners */
+
+    margin: 1rem; /*Spacing between cards */
+
+    align-items: center;
+    justify-content: center;
+}
+.card:hover{
+    background-color: peru;
+    color: #fff!important;
+    box-shadow: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* shadow for depth */
+}
+.card-title{
+    color: black;
+}
+.statistics{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+    gap: 5px;
+    padding: 0px;
+    align-items: center;
+    justify-items: center;
+}
+.card-chart{
+    /* display: flex; */
+    position: relative;
+    top: 2%;
+    width: 35rem;
+    height: 19rem;
+    padding: 2px 0px;
+    background-color: white;
+    text-align: center;
+    border: 2px solid red;  /* 2px thick, solid border with green color */
+    border-radius: 10px; /* Rounded corners */
+    margin: 20px; /*Spacing between cards */
+    align-items: center;
+    justify-content: center;
+}
+.card-transactions{
+    display: block;
+}
+/* END OF CARDS */
+
+#latest-transaction{
+    position: static;
+    top: 26%;
+    left: 22%;
+    text-decoration: underline;
+    
+}
+
+
+/* TO EXPENSES BUTTON */
+.ToExpenses-button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;    
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+      
+.ToExpenses-button:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+      
+.ToExpenses-button:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+      
+.ToExpenses-button:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+}
+/* END OF TO EXPEPENSES BUTTON */
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.register-page {
+    height: 100%;
+    background-color: navy;
+    overflow: hidden;
+}
+
+
+.form-holder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+}
+
+.form-holder .form-content {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.form-content .form-items {
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-content h3.form-title {
+    margin-bottom: 30px;
+}
+
+/* (FILL IN THE DATA BELOW) */
+.form-content p {
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+/* STYLE OF LABELS FOR THE FORM  */
+.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: #fff;
+}
+
+/* STYLE OF THE FORM CONTENT */
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email]{
+    width: 100%;
+    padding: 9px 10px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+/* REGISTER FORM BUTTON (REGISTER BUTTON) */
+.btn-primary{
+    background-color: white;
+    outline: none;
+    border: 0px;
+     box-shadow: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: white;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+}
+/* ---------------------------------------------------- */
+
+.form-content textarea {
+    position: static !important;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    outline: none;
+    resize: none;
+    height: 120px;
+    -webkit-transition: none;
+    transition: none;
+    margin-bottom: 14px;
+}
+
+.form-content textarea:hover, .form-content textarea:focus {
+    border: 0;
+    background-color: #ebeff8;
+    color: #8D8D8D;
+}
+
+.mv-up{
+    margin-top: -9px !important;
+    margin-bottom: 8px !important;
+}
+
