@@ -1,0 +1,132 @@
+{% extends "project/layout.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div id="wrapper">
+    {% include 'project/sidebar.html' %}
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <!-- TITLE AND USER INFORMATION -->
+                <div class="d-flex justify-content-between w-100">
+                    <!-- TITLE -->
+                    <h1>Categories</h1>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- PROFILE ICON PART -->
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi, {{ user.username }}</span>
+                                <img class="img-profile rounded-circle" src="{}">  <!-- ADD IMAGE SOURCE  -->
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{% url 'project:Profile' %}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'project:logout_view' %}">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Topbar -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card my-3">
+                            <!-- CARD HEADER OF ADD CATEGORY -->
+                            <div class="card-header pb-0">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0">Add New Category</h6>
+                                </div>
+                            </div>
+                            <!-- CARD BODY OF ADD CATEGORY -->
+                            <div class="card-body p-3">
+                                <div class="row gx-4">
+                                    <div class="transaction-form">
+                                        <form method="POST" action="{% url 'project:add_category' %}">
+                                            {% csrf_token %}
+                                            
+                                            {{ form|crispy }}
+                                            
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="radio-container">
+                                                        <label for="category-Type">Category Type</label>
+                                                        {{ form.Category_Type }}
+                                                    </div>  
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="category-Name">Category Name</label>
+                                                    {{ form.Category_Name }}
+                                                </div>
+                                            </div> -->
+                                                
+                                            <button type="submit" class="btn btn-primary">Add Category</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- CARD HEADER OF CATEGORY LIST -->
+                        <div class="card my-3">
+                            <div class="card-header pb-0">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0">Category List</h6>
+                                </div>
+                            </div>
+                            <!-- CARD BODY OF CATEGORY LIST -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Category Type</th>
+                                                    <th>Category Name</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for category in categories %}
+                                                <tr>
+                                                    <td>{{ category.Category_Type }}</td>
+                                                    <td>{{ category.Category_Name }}</td>
+                                                    <td>
+                                                        <a href="{% url 'project:edit_category' category.id %}" class="btn btn-primary" 
+                                                        onclick="edit_Category()" id="Edit-Category-Button">Edit</a>
+                                                        <a href="{% url 'project:delete_category' category.id %}" class="btn btn-danger"
+                                                        onclick="confirmDelete()" id="Delete-Category-Button">Delete</a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'project/footer.html' %}
+    </div>
+</div>
+{% endblock %}

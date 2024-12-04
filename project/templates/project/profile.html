@@ -1,0 +1,178 @@
+{% extends "project/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div id="wrapper">
+  {% include 'project/sidebar.html' %}
+  <div id="content-wrapper" class="d-flex flex-column">
+      <!-- MAIN CONTENT -->
+      <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!-- Sidebar Toggle (Topbar) -->
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                  <i class="fa fa-bars"></i>
+              </button>
+              <!-- TITLE AND USER INFORMATION -->
+              <div class="col-md-11">
+                  <h1>Profile</h1>
+              </div>
+              <!-- Topbar Navbar --> 
+              <div class="col-md-12">
+                  <a class="dropdown-item" href="{% url 'project:logout_view' %}">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                  </a>
+              </div>
+          </nav>
+          <!-- CARD PROFILE -->
+          <div class="card shadow-lg mx-4 card-profile-background">
+              <div class="card-body p-3">
+                <div class="row gx-4">
+                  <div class="col-auto">
+                    <div class="avatar avatar-xl ">
+                      <img src="{% static 'images/My-photo.jpg' %}" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> <!--ADD IMAGE SOURCE -->
+                    </div>
+                  </div>
+                  <div class="col-auto my-auto">
+                    <div class="h-100">
+                      <h5 class="mb-1">
+                        {{user.first_name}}  {{user.last_name}}
+                      </h5>
+                      <p class="mb-0 font-weight-bold text-sm">
+                        Software Engineer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>  
+          <!-- END OF CARD PROFILE -->
+
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card my-3">
+                          <div class="card-header pb-0">
+                            <div class="d-flex align-items-center">
+                              <!-- SUBTITLE -->
+                              <p class="text-uppercase text-sm">User Information</p>
+                              <!-- EDIT BUTTON -->
+                              <a href="{% url 'project:edit_profile' %}" class="btn btn-primary btn-sm ms-auto" id="edit-account-button"
+                              onclick="toggleEdit()">Edit Account Info</a>
+                              <!-- SAVE BUTTON -->
+                              <a href="#" class="btn btn-success btn-sm ms-2" id="save-account-button" 
+                              onclick="saveProfile(event)" style="display: none;">Save Changes</a>
+                              <!-- DELETE BUTTON -->
+                              <a href="{% url 'project:delete_profile' %}" class="btn btn-danger btn-sm ms-2" id="delete-account-button"
+                              onclick="confirmDeleteAccount(event)">Delete Account</a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <!-- FIRST NAME -->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="first-name" class="form-control-label">First name</label>
+                                  <input id="first-name" class="form-control" type="text" name="first_name" value="{{ user.first_name }}" readonly>
+                                </div>
+                              </div>
+                              <!-- LAST NAME -->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="last-name" class="form-control-label">Last name</label>
+                                  <input id="last-name" class="form-control" type="text" name="last_name" value="{{ user.last_name }}" readonly>
+                                </div>
+                              </div>
+                              <!-- USERNAME -->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="username" class="form-control-label">Username</label>
+                                      <input id="username" class="form-control" type="text" name="username" value="{{user.username}}" readonly>
+                                  </div>
+                              </div>
+                              <!-- EMAIL ADDRESS -->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="email" class="form-control-label">Email address</label>
+                                      <input id="email" class="form-control" type="email" name="email" value="{{ user.email }}" readonly>
+                                  </div>
+                              </div>
+                              <!-- ACCOUNT TYPE  -->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="account-type" class="form-control-label">Account Type</label>
+                                      <input id="account-type" class="form-control" type="text" name="account_type" value="{{user.account_type}}" readonly>
+                                  </div>
+                              </div>
+                              <!-- DIVIDER -->
+                              <hr class="horizontal dark">
+                              <!-- SUBTITLE -->
+                              <p class="text-uppercase text-sm">Family Members</p>
+                              <!-- FAMILY MEMBERS -->
+                              <div class="col-md-6">
+                                  <div class="list-group">
+                                    {% for member in family_members %}
+                                      <a href="#" class="list-group-item list-group-item-action">{{ member.first_name }} {{ member.last_name }}</a>
+                                    {% endfor %}
+                                  </div>
+                              <!-- DIVIDER -->
+                              <hr class="horizontal dark">
+                              <!-- SUBTITLE -->
+                              <p class="text-uppercase text-sm">Security</p>
+                              <!-- PASSWORD -->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="password" class="form-control-label">Password</label>
+                                  <input id="password" class="form-control" type="password" name="password" value="password" readonly>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>    
+        {% include 'project/footer.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Function to toggle the readonly attribute of input fields and show/hide buttons
+    function toggleEditMode() {
+        const inputs = document.querySelectorAll('.form-control');
+        const editButton = document.getElementById("edit-account-button");
+        const saveButton = document.getElementById("save-account-button");
+        const deleteButton = document.getElementById("delete-account-button");
+
+        inputs.forEach(input => {
+            // Toggle the readonly attribute for all input fields
+            if (input.hasAttribute('readonly')) {
+                input.removeAttribute('readonly');
+            } else {
+                input.setAttribute('readonly', true);
+            }
+        });
+
+        // Show/Hide buttons
+        if (editButton.style.display !== "none") {
+            editButton.style.display = "none";
+            deleteButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        } else {
+            editButton.style.display = "inline-block";
+            deleteButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        }
+    }
+
+    // Function to submit the form
+    function saveProfile(event) {
+        event.preventDefault();
+        const form = document.getElementById("profile-form");
+        form.submit();
+    }
+</script>
+
+{% endblock %}

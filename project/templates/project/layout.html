@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Expense Tracker Project</title>
+
+        <!-- ****************** LINKING CSS FILES ****************** -->
+        <!--
+            ************
+            MY CSS FILES
+            ************
+        -->
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/transaction-logs.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/add-transaction.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+
+        <!--
+            *******************
+            BOOTSTRAP CSS FILES
+            *******************
+        -->
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+        <!--ADMIN DASHBOARD-->
+        <link href="{% static 'css/sb-admin-1.css' %}" rel="stylesheet" type="text/css">
+
+        <!--ARAGON DASHBOARD-->
+        <link id="pagestyle" href="{% static 'css/argon-dashboard.css' %}" rel="stylesheet" />
+        <script src="{% static 'javascript/argon-dashboard.min.js' %}"></script>
+
+        <!--
+            **************************
+            DATA TABLES CSS & JS FILES
+            **************************
+        -->
+        <link href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.dataTables.min.js"></script>
+
+        <!-- Custom fonts for this template-->
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+        <!--
+            ***********************
+            ARAGON DASHBOARD FILES
+            ***********************
+        -->
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
+
+        <!--   Core JS Files   -->
+        <script src="{% static 'javascript/popper.min.js' %}"></script>
+        <script src="{% static 'javascript/bootstrap.min.js' %}"></script>
+        <script src="{% static 'javascript/plugins/perfect-scrollbar.min.js' %}"></script>
+        <script src="{% static 'javascript/plugins/smooth-scrollbar.min.js' %}"></script>
+        <script src="{% static 'javascript/plugins/chartjs.min.js' %}"></script>
+        
+        <!-- ****************** LINKING SCRIPT FILES ****************** -->
+
+        <!-- MY JAVASCRIPST FILES -->
+        <script src="{% static 'js/main.js' %}" defer></script>
+        <script src="{% static 'js/register.js' %}" defer></script>
+        <script src="{% static 'js/transactions.js' %}" defer></script>
+        <script src="{% static 'js/dashboard.js' %}" defer></script>
+        <script src="{% static 'js/profile.js' %}" defer></script>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'javascript/sb-admin-2.min.js' %}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'javascript/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'javascript/demo/chart-pie-demo.js' %}"></script>
+
+        <!-- 
+        *******************
+        DATA TABLES SCRIPTS
+        ******************* 
+        -->
+        <!-- Custom styles for tables page -->
+        <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'javascript/demo/datatables-demo.js' %}"></script>
+
+        <!--
+            *******************
+            CHART JS SCRIPTS
+            *******************
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+
+    </head>
+
+    <body>
+        {% block body %}
+        
+        {% endblock %}
+    </body>
+</html>

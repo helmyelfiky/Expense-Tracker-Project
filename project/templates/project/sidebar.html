@@ -1,0 +1,66 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion floating-sidebar " id="accordionSidebar">
+    
+    <!-- SIDEBAR - BRAND -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'project:Dashboard' %}">
+        <!-- TOP LEFT ICON BESIDE HEADER -->
+        <div class="sidebar-brand-icon rotate-n-15">
+            <!-- <i class="fas fa-laugh-wink"></i> -->
+        </div>
+        <div class="sidebar-brand-text">Expenses Tracker</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'project:Dashboard' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <!-- <hr class="sidebar-divider"> -->
+
+    <!-- TRANSACTIONS LOG -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project:transactions_all' %}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Transactions Log</span>
+        </a>
+
+    <!-- ADD EXPENSES -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project:add_transaction' %}">
+            <i class="fa-solid fa-money-bill"></i>
+            <span>Add Transaction</span>
+        </a>
+    </li>
+
+    <!-- CATEGORIES -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project:add_category' %}">
+            <i class="fa-solid fa-list"></i>
+            <span>Categories</span>
+        </a>
+    </li>
+
+    <!-- FAMILY -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project:family' %}">
+            <i class="fa-solid fa-users"></i>
+            <span>Family</span>
+        </a>
+    </li>
+
+    <!-- SETTINGS -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project:Profile' %}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </li>
+</ul>
+<!-- End of Sidebar -->

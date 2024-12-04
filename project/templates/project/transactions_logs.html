@@ -1,0 +1,102 @@
+{% extends 'project/layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <div id="wrapper">
+        {% include 'project/sidebar.html' %}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="col-md-11">
+                        <h1>Transcations Log</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <a class="dropdown-item" href="{% url 'project:logout_view' %}">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="container-fluid">
+                    <h1 class="h3 mb-4 text-gray-800">Transaction Logs</h1>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Transactions</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction ID</th>
+                                            <th>Transaction Type</th>
+                                            <th>Date</th>
+                                            <th>Category</th>
+                                            <th>Amount</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for transaction in transactions %}
+                                            <tr>
+                                                <td>{{ transaction.Transaction_ID }}</td>
+                                                <td>{{ transaction.Transaction_type }}</td>
+                                                <td>{{ transaction.Date }}</td>
+                                                <td>{{ transaction.Category.Category_Name }}</td>
+                                                <td>{{ transaction.Amount }}</td>
+                                                <td>{{ transaction.Description }}</td>
+                                                <td>
+                                                    <!-- EDIT BUTTON -->
+                                                    <a href="{% url 'project:edit_transaction' transaction.Transaction_ID %}" class="button button-primary mr-3"
+                                                        onclick="edit_Transaction()" id="Edit-Transaction-Button">Edit</a>
+                                                    <!-- DELETE BUTTON -->
+                                                    <a href="{% url 'project:delete_transaction' transaction.Transaction_ID %}" class="button button-danger" 
+                                                        onclick="return confirmDelete();" id="Delete-Transaction-Button">Delete</a>
+                                                </td>
+                                            </tr>
+                                        {% empty %}
+                                            <tr>
+                                                <td colspan="7">No transactions recorded yet.</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-info" onclick="edit_Transaction()">Show Card</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card to be shown/hidden -->
+                    <div class="col-md-12" id="Edit-Transaction-Card" style="display: none;">
+                        <div class="card shadow mb-4">
+                            <!-- CARD HEADER -->
+                            <div class="card-header">
+                                <h6 class="m-0 font-weight-bold text-primary">Transaction Information</h6>
+                            </div>
+                            <!-- CARD BODY -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <!-- EDIT TRANSACTION -->
+                                    <div class="transaction-form">
+                                        <form method="POST" action="{% url 'project:edit_transaction' %}">
+                                            {% csrf_token %}
+                                            {{ form|crispy }}
+                                            <button type="submit" class="btn btn-success">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'project/footer.html' %}
+        </div>
+    </div>
+{% endblock %}

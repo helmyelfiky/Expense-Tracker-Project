@@ -1,0 +1,44 @@
+{% extends "project/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<section class="body"> 
+    <div class="container">
+        <div class="login-box">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        Expenses<span class="logo-font">Tracker</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <br>
+                    <h3 class="header-title">Create your account</h3>
+                    <form class="login-form" action="{% url 'project:signup' %}" method="post">
+                        {% csrf_token %}
+
+                        {{form|crispy}}
+
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-block" type="submit" value="SIGN UP" name="signup_button" onclick="validateForm(event)">
+                        </div>
+
+                        <div class="Error-message">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p>{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'project/footer.html' %}
+</section>
+
+{% endblock %} 

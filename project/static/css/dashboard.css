@@ -1,0 +1,17 @@
+.dropdown-menu-left{
+    right: auto;
+    left:0
+}
+.dropdown-menu-right{
+    right:0;
+    left:auto
+}
+.border-left-danger{
+    color : #dc3545;
+}
+.border-left-success{
+    color : #28a745;
+}
+.border-left-warning{
+    color : #ffc107;
+}
