@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'ExpenseTracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'project',  # Replace with your DB name
+        'USER': 'postgres',  # Replace with your PostgreSQL username
+        'PASSWORD': 'Helmy2001',  # Replace with your password
+        'HOST': 'localhost',  # Or the DB host in deployment
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
